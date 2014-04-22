@@ -79,15 +79,13 @@ public class BundleExtractorImpl implements BundleExtractor {
 		try {
 			JarFile jar = new JarFile(packageBundle);
 			String destination = jar.getManifest().getMainAttributes().getValue(MANIFEST_ATTRIBUTE);
-			if("".equals(destination)){
+			if(destination == null || "".equals(destination)){
 				System.out.println("Destination in MANIFEST is empty.");
 				return;
 			}
-			
 			// Make sure the folder is made
 			File dest = new File(System.getProperty("felix.home") + destination);
 			dest.mkdirs();
-			
 			Enumeration entries = jar.entries();
 			while(entries.hasMoreElements()){
 				JarEntry entry = (JarEntry) entries.nextElement();

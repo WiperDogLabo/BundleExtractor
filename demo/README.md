@@ -3,7 +3,7 @@ BundleExtractor
 This is a demo and test bundle-extractor on OSGI environment.  
 Explaination:  
 - lib folder is resource folder for testing compress, it contains resource files and a custom manifest file manifest.md  
-- manifest.md contains information about destination in Main-class entry(using Main-class entry because can't use custom entry for manifest - Invalid Header Exception)   
+- manifest.md contains information about destination in Destination entry    
 - Use bundle-extractor.sh to compress resource folder  
     $> bundle-extractor.sh -c lib/groovy org.wiperdog.lib.groovy-1.1.jar  
     

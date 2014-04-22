@@ -17,6 +17,7 @@ import org.wiperdog.bundleextractor.BundleExtractor;
 
 public class BundleExtractorImpl implements BundleExtractor {
 	private File listResources;
+	public String MANIFEST_ATTRIBUTE = "Destination";
 
 	public BundleExtractorImpl() {
 		this.listResources = null;
@@ -77,7 +78,12 @@ public class BundleExtractorImpl implements BundleExtractor {
 	public void extractPackage(File packageBundle){
 		try {
 			JarFile jar = new JarFile(packageBundle);
-			String destination = jar.getManifest().getMainAttributes().getValue("Main-class");
+			String destination = jar.getManifest().getMainAttributes().getValue(MANIFEST_ATTRIBUTE);
+			if("".equals(destination)){
+				System.out.println("Destination in MANIFEST is empty.");
+				return;
+			}
+			
 			// Make sure the folder is made
 			File dest = new File(System.getProperty("felix.home") + destination);
 			dest.mkdirs();

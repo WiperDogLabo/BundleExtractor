@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://10.0.0.160:8080" />
+<title>Download and extract_failed</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Download and extract_failed</td></tr>
+</thead><tbody>
+<!--Open Xwiki page-->
+<tr>
+	<td>open</td>
+	<td>/xwiki/bin/view/Sandbox/Deploy+Bundle</td>
+	<td></td>
+</tr>
+<!--Do nothing with 3 text fields .Click button Download .After that ,there is 3 error about  input require-->
+<tr>
+	<td>click</td>
+	<td>id=downloadBtn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=#message &gt; p</td>
+	<td>Please insert groupId</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=#message &gt; p:nth-child(2)</td>
+	<td>Please insert artifactId</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=#message &gt; p:nth-child(3)</td>
+	<td>Please insert version</td>
+</tr>
+<!--Input value in Group Id text field.Click button Download .After that ,It remain 2 error about  input require-->
+<tr>
+	<td>type</td>
+	<td>id=groupId</td>
+	<td>org.wiperdog.job.mysql</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=downloadBtn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>css=#message &gt; p</td>
+	<td>Please insert groupId</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=#message &gt; p</td>
+	<td>Please insert artifactId</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=#message &gt; p:nth-child(2)</td>
+	<td>Please insert version</td>
+</tr>
+<!--Input value into  artifactId text field.Click button Download .After that ,It remain 1 error about  input require-->
+<tr>
+	<td>type</td>
+	<td>id=artifactId</td>
+	<td>org.wiperdog.job.mysql</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=downloadBtn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>css=#message &gt; p</td>
+	<td>Please insert groupId</td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>css=#message &gt; p</td>
+	<td>Please insert artifactId</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=#message &gt; p</td>
+	<td>Please insert version</td>
+</tr>
+<!--Input value into  version text field.Click button Download .After that ,no error remain-->
+<tr>
+	<td>type</td>
+	<td>id=version</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=downloadBtn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>css=#message &gt; p</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>3000</td>
+	<td></td>
+</tr>
+<!--Input into 3 value with incorrect parameter (Information about a bundle not available in repositories),click button download then check error message-->
+<tr>
+	<td>type</td>
+	<td>id=groupId</td>
+	<td>org.wiperdog.job.notavailable</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=artifactId</td>
+	<td>org.wiperdog.job.notavailable</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=version</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=downloadBtn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=status</td>
+	<td>Status: failed</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>css=input.files</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>id=checkAll</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

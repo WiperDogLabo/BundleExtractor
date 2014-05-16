@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://10.0.0.160:8080" />
+<title>Download and Extract File_success</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Download and Extract File_success</td></tr>
+</thead><tbody>
+<!--Open Xwiki page-->
+<tr>
+	<td>open</td>
+	<td>/xwiki/bin/view/Sandbox/Deploy+Bundle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=groupId</td>
+	<td>org.wiperdog.job.mysql</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=artifactId</td>
+	<td>org.wiperdog.job.mysql</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=version</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=downloadBtn</td>
+	<td></td>
+</tr>
+<!--Input 3 params : group id ,artifact id and version -->
+<tr>
+	<td>assertElementPresent</td>
+	<td>id=status</td>
+	<td>Processing..</td>
+</tr>
+<!--Wait for processing and check list file display on page ,each file come with a checkbox -->
+<tr>
+	<td>pause</td>
+	<td>3000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//input[@type='checkbox']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>id=message</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

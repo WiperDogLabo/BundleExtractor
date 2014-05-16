@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://10.0.0.160:8080" />
+<title>Install_Files_From_Bundle</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Install_Files_From_Bundle</td></tr>
+</thead><tbody>
+<!--Open Xwiki page-->
+<tr>
+	<td>open</td>
+	<td>/xwiki/bin/view/Sandbox/Deploy+Bundle</td>
+	<td></td>
+</tr>
+<!--Input 3 params : group id ,artifact id and version -->
+<tr>
+	<td>type</td>
+	<td>id=groupId</td>
+	<td>org.wiperdog.job.mysql</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=artifactId</td>
+	<td>org.wiperdog.job.mysql</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=version</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=downloadBtn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>id=status</td>
+	<td>Processing..</td>
+</tr>
+<!--Wait for processing and check list file display on page ,each file come with a checkbox -->
+<tr>
+	<td>pause</td>
+	<td>3000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//input[@type='checkbox']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>id=message</td>
+	<td></td>
+</tr>
+<!--Select a file to install ,click install button and file will be install , after that ,a success icon display next to file path selected-->
+<tr>
+	<td>check</td>
+	<td>css=input.files[@index=&quot;0&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=instBtn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>id=0_status@class</td>
+	<td>OK_status</td>
+</tr>
+<!--Input 3 params : group id ,artifact id and version -->
+<tr>
+	<td>type</td>
+	<td>id=groupId</td>
+	<td>org.wiperdog.job.mysql</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=artifactId</td>
+	<td>org.wiperdog.job.mysql</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=version</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=downloadBtn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>id=status</td>
+	<td>Processing..</td>
+</tr>
+<!--Wait for processing and check list file display on page ,each file come with a checkbox -->
+<tr>
+	<td>pause</td>
+	<td>3000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//input[@type='checkbox']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>id=message</td>
+	<td></td>
+</tr>
+<!--Select all file to install ,check that all text boxes is checked-->
+<tr>
+	<td>click</td>
+	<td>id=checkAll</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>css=.files</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=instBtn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>css=div[id$='_status']@class</td>
+	<td>OK_status</td>
+</tr>
+<!--Input into 3 value with incorrect parameter (Information about a bundle not available in repositories),click button download then check error message-->
+<tr>
+	<td>type</td>
+	<td>id=groupId</td>
+	<td>org.wiperdog.job.notavailable</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=artifactId</td>
+	<td>org.wiperdog.job.notavailable</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=version</td>
+	<td>1.0</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=downloadBtn</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=status</td>
+	<td>Status: failed</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>css=input.files</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>id=checkAll</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

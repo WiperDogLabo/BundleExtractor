@@ -9,8 +9,11 @@ class BundlePackaging{
 		def groupId = args[2]
 		def artifactId = args[3]
 		def version = args[4]
-		def strPOMTemplate = new File("pom.tpl").getText()
-		def pomFile = new File("maven_config/pom.xml")
+		
+		def pom_template = args[5]
+		
+		def strPOMTemplate = pom_template
+		def pomFile = new File("pom.xml")
 		def strPOMFile = strPOMTemplate.replaceAll("@resourcesDir@",resourcesDir)
 			strPOMFile = strPOMFile.replaceAll("@extractDestination@",destination).replaceAll("@groupid@",groupId).replaceAll("@artifactid@",artifactId).replaceAll("@version@",version)
 		pomFile.setText(strPOMFile);		
